@@ -1,0 +1,35 @@
+services:
+  web:
+    image: overconsulting/apachephp
+    container_name: apachephp
+    ports: 
+      - 8001:80
+    volumes:
+      - ./app:/var/www
+      - ./config/vhosts:/etc/apache2/sites-enabled
+      - ./config/custom.ini:/usr/local/etc/php/conf.d/custom.ini
+    networks:
+      - dev
+
+  mysql:
+    image: mysql
+    container_name: mysql
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    networks:
+      - dev
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin
+    ports:
+      - 8080:80
+    environment:
+      PMA_HOST: mysql
+    networks:
+      - dev
+
+networks:
+  dev:
