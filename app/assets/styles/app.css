@@ -1,3 +1,6 @@
 body {
-    background-color: skyblue;
+    background: linear-gradient(to right, #a8e063, #56ab2f); /* Gradient vert clair */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
 }

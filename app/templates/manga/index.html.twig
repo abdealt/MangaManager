@@ -1,43 +1,55 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Manga index{% endblock %}
+{% block title %}Manga Index{% endblock %}
 
 {% block body %}
-    <h1>Manga index</h1>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4 text-white p-3 rounded" style="background: linear-gradient(135deg, #4caf50, #8bc34a);">
+            📚 Liste des mangas disponibles
+        </h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Price</th>
-                <th>Description</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for manga in mangas %}
-            <tr>
-                <td>{{ manga.id }}</td>
-                <td>{{ manga.title }}</td>
-                <td>{{ manga.price }}</td>
-                <td>{{ manga.description }}</td>
-                <td>{{ manga.createdAt ? manga.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ manga.updatedAt ? manga.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_manga_show', {'id': manga.id}) }}">show</a>
-                    <a href="{{ path('app_manga_edit', {'id': manga.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="mb-4 text-end">
+            <a class="btn btn-success shadow" href="{{ path('app_manga_new') }}">➕ Ajouter un manga</a>
+        </div>
 
-    <a href="{{ path('app_manga_new') }}">Create new</a>
+        <div class="table-responsive">
+            <table class="table table-hover table-dark shadow-sm">
+                <thead class="text-white text-center" style="background: linear-gradient(135deg, #333333, #4caf50);">
+                    <tr>
+                        <th>Titre</th>
+                        <th>Prix</th>
+                        <th>Description</th>
+                        <th>Créé le</th>
+                        <th>Mis à jour le</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for manga in mangas %}
+                    <tr class="align-middle">
+                        <td class="fw-bold">{{ manga.title }}</td>
+                        <td class="text-center text-success fw-semibold">{{ manga.price }} €</td>
+                        <td>{{ manga.description }}</td>
+                        <td class="text-center">{{ manga.createdAt ? manga.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                        <td class="text-center">{{ manga.updatedAt ? manga.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                        <td class="text-center">
+                            <div class="d-flex gap-2 justify-content-center">
+                                <a class="btn btn-info btn-sm shadow" href="{{ path('app_manga_show', {'id': manga.id}) }}">
+                                    👁️ Voir
+                                </a>
+                                <a class="btn btn-warning btn-sm shadow" href="{{ path('app_manga_edit', {'id': manga.id}) }}">
+                                    ✏️ Modifier
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6" class="text-center text-danger fw-bold">Aucun manga trouvé</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}
