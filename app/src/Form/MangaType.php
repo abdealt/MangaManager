@@ -15,6 +15,7 @@ class MangaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('imageUrl')
             ->add('title')
             ->add('price')
             ->add('description')

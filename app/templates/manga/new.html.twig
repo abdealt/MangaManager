@@ -4,18 +4,19 @@
 
 {% block body %}
     <div class="container mt-4">
-        <h1 class="text-center mb-4 text-white p-3 rounded" style="background: linear-gradient(135deg, #4caf50, #8bc34a);">
-            ➕ Crée un nouveau Manga
-        </h1>
-
-        <div class="card shadow-sm">
+        <!-- Carte contenant le formulaire -->
+        <div class="card shadow-lg border-0 rounded-lg">
             <div class="card-body">
+                <h5 class="card-title text-center mb-4">Ajouter un Manga</h5>
                 {{ include('manga/_form.html.twig') }}
             </div>
         </div>
 
+        <!-- Bouton Retour -->
         <div class="mt-3">
-            <a class="btn btn-secondary" href="{{ path('app_manga_index') }}">Retour a la liste</a>
+            <a class="btn btn-outline-primary" href="{{ path('app_manga_index') }}">
+                <i class="bi bi-arrow-left-circle"></i> Retour à la liste
+            </a>
         </div>
     </div>
 {% endblock %}

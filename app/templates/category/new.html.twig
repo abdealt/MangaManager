@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle catégorie{% endblock %}
+
+{% block body %}
+    {{ include('category/_form.html.twig') }}
+
+    <a href="{{ path('app_category_index') }}" class="btn btn-primary">Retour à la liste</a>
+{% endblock %}

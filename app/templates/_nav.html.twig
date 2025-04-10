@@ -1,35 +1,36 @@
-<nav class="navbar navbar-expand-lg" style="background: linear-gradient(135deg, #a8e6cf, #d4fc79);">
+<nav class="navbar navbar-expand-lg navbar-light" style="background: #2D2D2D; height: 70px;">
     <div class="container-fluid">
-        <!-- Logo et titre -->
-        <a class="navbar-brand fw-bold text-dark" href="{{ path('app_manga_index') }}">
-            📚 Manga Manager
-        </a>
+        <!-- Liens à gauche -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link text-white fw-semibold" href="{{ path('app_manga_index') }}">Manga</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white fw-semibold" href="{{ path('app_tag_index') }}">Tags</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white fw-semibold" href="{{ path('app_category_index') }}">Categorie</a>
+            </li>
 
-        <!-- Bouton pour le menu sur mobile -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        </ul>
 
-        <!-- Liens -->
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                {% if app.user %}
-                    <li class="nav-item">
-                        <a class="nav-link text-dark fw-semibold" href="{{ path('app_logout') }}">
-                            <i class="bi bi-person-circle"></i> {{ app.user.email }}
-                        </a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="btn btn-outline-dark me-2" href="{{ path('app_register') }}">S'inscrire</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-dark" href="{{ path('app_login') }}">Se connecter</a>
-                    </li>
-                {% endif %}
-            </ul>
-        </div>
+        <!-- Liens à droite -->
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            {% if app.user %}
+                <li class="nav-item">
+                    <a class="nav-link text-white fw-semibold" href="{{ path('app_logout') }}">
+                        {{ app.user.email }}
+                    </a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="btn btn-outline-light me-2" href="{{ path('app_register') }}">S'inscrire</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-light" href="{{ path('app_login') }}">Se connecter</a>
+                </li>
+            {% endif %}
+        </ul>
     </div>
 </nav>
 

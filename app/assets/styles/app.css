@@ -1,6 +1,31 @@
 body {
-    background: linear-gradient(to right, #a8e063, #56ab2f); /* Gradient vert clair */
+    background: #f4f4f4; /* Fond gris clair pour un look sobre */
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    color: #333; /* Texte gris foncé pour un contraste agréable */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    color: #2c3e50; /* Couleur sombre pour les titres */
+    font-weight: bold;
+}
+
+p {
+    line-height: 1.6;
+}
+
+a {
+    color: #3498db; /* Liens bleus pour une légère touche de couleur */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }

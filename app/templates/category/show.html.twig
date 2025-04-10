@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégorie{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th>ID</th>
+                            <td>{{ category.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Label</th>
+                            <td>{{ category.label }}</td>
+                        </tr>
+                        <tr>
+                            <th>Créé le</th>
+                            <td>{{ category.createdAt ? category.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Mis à jour le</th>
+                            <td>{{ category.updatedAt ? category.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="mt-3 d-flex justify-content-start gap-2">
+            <a class="btn btn-secondary" href="{{ path('app_category_index') }}">
+                ↩️ Retour à la liste
+            </a>
+            <a class="btn btn-warning" href="{{ path('app_category_edit', {'id': category.id}) }}">
+                ✏️ Modifier
+            </a>
+            {{ include('category/_delete_form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

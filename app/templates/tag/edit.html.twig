@@ -4,21 +4,15 @@
 
 {% block body %}
     <div class="container mt-4">
-        <h1 class="text-center mb-4 text-white p-3 rounded" style="background: linear-gradient(135deg, #4caf50, #8bc34a);">
-            ✏️ Modifier le Tag
-        </h1>
-
         <div class="card shadow-sm">
             <div class="card-body">
-                {{ include('tag/_form.html.twig', {'button_label': 'Update'}) }}
+                <h5 class="card-title">Modifier le Tag</h5>
+                {{ include('tag/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
             </div>
         </div>
 
-        <div class="mt-3">
+        <div class="mt-3 d-flex justify-content-start gap-2">
             <a class="btn btn-secondary" href="{{ path('app_tag_index') }}">Retour à la liste</a>
-        </div>
-
-        <div class="mt-4">
             {{ include('tag/_delete_form.html.twig') }}
         </div>
     </div>

@@ -1,23 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Tag index{% endblock %}
+{% block title %}Liste des catégories{% endblock %}
 
 {% block body %}
     <div class="container mt-4">
         <div class="d-flex justify-content-between mb-4">
-            <h1>Tags</h1>
-            <a href="{{ path('app_tag_new') }}" class="btn btn-primary">Créer un <br> nouveau</a>
+            <h1>Catégories</h1>
+            <a href="{{ path('app_category_new') }}" class="btn btn-primary">Créer un <br> nouveau</a>
         </div>
         
         <div class="row">
-            {% for tag in tags %}
+            {% for category in categories %}
                 <div class="col-md-4 mb-4">
                     <div class="card shadow-sm">
                         <div class="card-body">
-                            <h5 class="card-title fw-bold text-secondary">{{ tag.name }}</h5>
+                            <h5 class="card-title text-secondary">{{ category.label }}</h5>
                             <div class="d-flex justify-content-around mt-3">
-                                <a class="btn btn-info btn-sm" href="{{ path('app_tag_show', {'id': tag.id}) }}">👁️ Montrer</a>
-                                <a class="btn btn-warning btn-sm" href="{{ path('app_tag_edit', {'id': tag.id}) }}">✏️ Modifier</a>
+                                <a class="btn btn-info btn-sm" href="{{ path('app_category_show', {'id': category.id}) }}">👁️ Montrer</a>
+                                <a class="btn btn-warning btn-sm" href="{{ path('app_category_edit', {'id': category.id}) }}">✏️ Modifier</a>
                             </div>
                         </div>
                     </div>
