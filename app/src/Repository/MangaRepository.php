@@ -40,4 +40,15 @@ class MangaRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function findByTitle(string $search): array
+    {
+        return $this->createQueryBuilder('m')
+            ->andWhere('m.title LIKE :search')
+            ->setParameter('search', '%'.$search.'%')
+            ->orderBy('m.title', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

@@ -5,6 +5,14 @@
 {% block body %}
     <div class="container mt-4">
 
+        <!-- Formulaire de recherche -->
+        <form method="get" action="{{ path('app_manga_index') }}" class="mb-4">
+            <div class="input-group">
+                <input type="text" class="form-control" name="search" placeholder="Rechercher un manga" value="{{ app.request.query.get('search') }}">
+                <button class="btn btn-outline-secondary" type="submit">Rechercher</button>
+            </div>
+        </form>
+
         <div class="d-flex justify-content-between mb-4">
             <h1>Mangas</h1>
             <a class="btn btn-primary shadow-sm" href="{{ path('app_manga_new') }}">Ajouter un  <br>manga</a>

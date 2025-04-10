@@ -17,10 +17,20 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 final class MangaController extends AbstractController
 {
     #[Route(name: 'app_manga_index', methods: ['GET'])]
-    public function index(MangaRepository $mangaRepository): Response
+    public function index(Request $request, MangaRepository $mangaRepository): Response
     {
+        $search = $request->query->get('search', '');
+        
+        // Si une recherche est effectuée
+        if ($search) {
+            $mangas = $mangaRepository->findByTitle($search);
+        } else {
+            $mangas = $mangaRepository->findAll();
+        }
+        
         return $this->render('manga/index.html.twig', [
-            'mangas' => $mangaRepository->findAll(),
+            'mangas' => $mangas,
+            'search' => $search,
         ]);
     }
 
