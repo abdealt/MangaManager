@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tag index{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="text-center mb-4 text-white p-3 rounded" style="background: linear-gradient(135deg, #4caf50, #8bc34a);">
+            🔖 Tag Index
+        </h1>
+
+        <div class="mb-4 text-end">
+            <a class="btn btn-success shadow" href="{{ path('app_tag_new') }}">
+                ➕ Créer un nouveau
+            </a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover table-striped shadow-sm">
+                <thead class="text-white" style="background: linear-gradient(135deg, #333333, #4caf50);">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tag in tags %}
+                        <tr>
+                            <td>{{ tag.id }}</td>
+                            <td>{{ tag.name }}</td>
+                            <td>
+                                <a class="btn btn-info btn-sm shadow" href="{{ path('app_tag_show', {'id': tag.id}) }}">👁️ Montrer</a>
+                                <a class="btn btn-warning btn-sm shadow" href="{{ path('app_tag_edit', {'id': tag.id}) }}">✏️ Modifier</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3" class="text-center text-danger fw-bold">Pas d'enregistrement trouvé</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

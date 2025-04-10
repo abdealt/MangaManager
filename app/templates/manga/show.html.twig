@@ -3,40 +3,54 @@
 {% block title %}Manga{% endblock %}
 
 {% block body %}
-    <h1>Manga</h1>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Manga</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ manga.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ manga.title }}</td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ manga.price }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ manga.description }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ manga.createdAt ? manga.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ manga.updatedAt ? manga.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <table class="table table-bordered table-striped">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ manga.id }}</td>
+                </tr>
+                <tr>
+                    <th>Title</th>
+                    <td>{{ manga.title }}</td>
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <td>{{ manga.price }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ manga.description }}</td>
+                </tr>
+                <tr>
+                    <th>CreatedAt</th>
+                    <td>{{ manga.createdAt ? manga.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>UpdatedAt</th>
+                    <td>{{ manga.updatedAt ? manga.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                </tr>
+                <!-- Affichage des tags dans la vue show -->
+                <tr>
+                    <th>Tags</th>
+                    <td>
+                        {% for tag in manga.tags %}
+                            <span class="badge bg-primary">{{ tag.name }}</span>
+                        {% else %}
+                            <span>Aucun tag</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_manga_index') }}">back to list</a>
+        <div class="d-flex justify-content-between mt-3">
+            <a href="{{ path('app_manga_index') }}" class="btn btn-secondary">Retour a la liste</a>
+            <a href="{{ path('app_manga_edit', {'id': manga.id}) }}" class="btn btn-warning">Edit</a>
+        </div>
 
-    <a href="{{ path('app_manga_edit', {'id': manga.id}) }}">edit</a>
-
-    {{ include('manga/_delete_form.html.twig') }}
+        {{ include('manga/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

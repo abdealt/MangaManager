@@ -1,22 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Manga{% endblock %}
+{% block title %}Nouveau Tag{% endblock %}
 
 {% block body %}
     <div class="container mt-4">
         <h1 class="text-center mb-4 text-white p-3 rounded" style="background: linear-gradient(135deg, #4caf50, #8bc34a);">
-            ✏️ Edit Manga
+            ✨ Créer un nouveau Tag
         </h1>
 
         <div class="card shadow-sm">
             <div class="card-body">
-                {{ include('manga/_form.html.twig', {'button_label': 'Update'}) }}
+                {{ include('tag/_form.html.twig') }}
             </div>
         </div>
 
-        <div class="d-flex justify-content-between mt-3">
-            <a class="btn btn-secondary" href="{{ path('app_manga_index') }}">Retour a la liste</a>
-            {{ include('manga/_delete_form.html.twig') }}
+        <div class="mt-3">
+            <a class="btn btn-secondary" href="{{ path('app_tag_index') }}">
+                ↩️ Retour à la liste
+            </a>
         </div>
     </div>
 {% endblock %}
